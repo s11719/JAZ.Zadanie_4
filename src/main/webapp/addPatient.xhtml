@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui" 
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+            <h:form id="patientForm">
+		<p:growl id="msgs" showDetail="true" />
+        
+                <h:panelGrid columns="2" cellpadding="10">
+                    <p:outputLabel value="#{msg.formName}" />
+                    <p:inputText />
+                    
+                    <p:outputLabel value="#{msg.formSurname}" />
+                    <p:inputText />
+                    
+                    <p:outputLabel value="#{msg.formPesel}" />
+                    <p:inputMask mask="99999999999"/>
+                    
+                    <p:outputLabel for="popup" value="#{msg.formBirthdate}" />
+                    <p:calendar id="popup" value="#{calendarView.date2}" />
+                    
+                    <p:outputLabel value="#{msg.formAddress}" />
+                    <p:inputTextarea rows="2" cols="25" />
+                    
+                    <p:outputLabel value="#{msg.formPhoneNumber}" />
+                    <p:inputMask mask="(999) 999-99-99"/>
+                    
+                    <p:outputLabel value="#{msg.formWeight}" />
+                    <p:inputText />
+                    
+                     <p:outputLabel value="#{msg.formHeight}" />
+                    <p:inputText />
+                    
+                    <p:commandButton value="#{msg.formReset}" type="reset" />
+                    <p:commandButton value="#{msg.formSubmit}" />
+                </h:panelGrid>
+                
+                <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                    <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                        <h:outputText value="#{msg.formBirthdate}" />
+                            <h:outputText value="#{calendarView.date2}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                    </p:panelGrid>
+                </p:dialog>        
+                        
+		</h:form>
+	</ui:define>
+</ui:composition>

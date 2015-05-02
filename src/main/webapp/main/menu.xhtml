@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+    <div>
+    <h:form>  
+        <p:growl id="messages"/>
+
+        <p:menubar>
+            <p:menuitem value="#{msg.patientSearch}" url="listPatient.xhtml" icon="ui-icon-search" />
+            <p:menuitem value="#{msg.patientAdd}" url="faces/addPatient.xhtml" icon="ui-icon-plus" />
+
+            <f:facet name="options">
+                <p:commandButton type="button" value="#{msg.tools}" icon="ui-icon-wrench" disabled="true" />
+            </f:facet>
+        </p:menubar>
+    </h:form>
+    </div>
+</ui:composition>
