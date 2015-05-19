@@ -6,6 +6,30 @@
         xmlns:p="http://primefaces.org/ui" 
 	template="/templates/default.xhtml">
 	<ui:define name="content">
-            Tutaj będzie można wyświetlać listę wszystkich pacjentów.
+            <p:dataTable var="patient" value="#{patientBean.patientData}">
+                 <p:column headerText="#{msg.patientDateAdded}">
+                    <h:outputText value="#{patient.dateAdded}" />
+                </p:column>
+                
+                <p:column headerText="#{msg.patientName}">
+                    <h:outputText value="#{patient.name}" />
+                </p:column>
+
+                <p:column headerText="#{msg.patientSurname}">
+                    <h:outputText value="#{patient.surname}" />
+                </p:column>
+                
+                <p:column headerText="#{msg.patientPesel}">
+                    <h:outputText value="#{patient.pesel}" />
+                </p:column>
+                
+                <p:column headerText="#{msg.patientWeight}">
+                    <h:outputText value="#{patient.weight}" />
+                </p:column>
+                
+                <p:column headerText="#{msg.patientHeight}">
+                    <h:outputText value="#{patient.height}" />
+                </p:column> 
+            </p:dataTable>
 	</ui:define>
 </ui:composition>
