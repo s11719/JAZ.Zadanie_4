@@ -10,9 +10,9 @@ public class Patient {
     String pesel;
     Date birthDate;
     String address;
-    String phoneNumber;
-    String weight;
-    String height; 
+    int phoneNumber;
+    float weight;
+    float height; 
     
     public String getDateAdded() {
         return dateAdded;
@@ -62,27 +62,27 @@ public class Patient {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public String getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(float height) {
         this.height = height;
     }  
     

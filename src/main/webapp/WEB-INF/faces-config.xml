@@ -10,7 +10,10 @@
             <var>msg</var>
 	</resource-bundle>
 
-<!--	<message-bundle>errormessages</message-bundle>-->
+        <resource-bundle>
+            <base-name>errormessages</base-name>
+            <var>err</var>
+	</resource-bundle>
 
 	<locale-config>
             <default-locale>pl</default-locale>

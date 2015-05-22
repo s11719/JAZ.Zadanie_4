@@ -4,13 +4,21 @@ import com.JAZ.zadanie_4.domain.Patient;
 import com.JAZ.zadanie_4.service.PatientRepository;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Named;
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 @SessionScoped
 @Named("patientBean")
-public class PatientBean  implements Serializable {
+public class PatientBean implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
     
     private Patient patient = new Patient();
     
@@ -41,5 +49,19 @@ public class PatientBean  implements Serializable {
         return "listPatient";
     }
     
+    public void uniquePesel(FacesContext context, UIComponent component, Object value) {       
+        String pesel = (String)value;
+        System.out.println(pesel);
+        
+        for (Patient patient : db.getList()) {           
+            if (patient.getPesel().equalsIgnoreCase(pesel)) {
+		throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Nie można dublować numerów PESEL.", null));
+            }
+        }        
+    }
+    
 }
+        
+    
+
 
