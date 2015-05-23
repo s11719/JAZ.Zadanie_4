@@ -10,7 +10,7 @@ public class Patient {
     String pesel;
     Date birthDate;
     String address;
-    int phoneNumber;
+    String phoneNumber;
     float weight;
     float height; 
     
@@ -62,11 +62,11 @@ public class Patient {
         this.address = address;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

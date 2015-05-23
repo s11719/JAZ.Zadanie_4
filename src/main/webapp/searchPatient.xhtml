@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui" 
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+            <h:form id="patientFilter">
+                <p:dataTable var="patient" value="#{patientBean.patientData}" widgetVar="patientFilter"
+                             emptyMessage="#{msg.patientNotFound}" filteredValue="#{patientBean.filteredData}">
+
+                    <p:column sortBy="#{patient.name}" filterBy="#{patient.name}" 
+                              headerText="#{msg.patientName}" filterMatchMode="contains">
+                        <h:outputText value="#{patient.name}" />
+                    </p:column>
+
+                    <p:column sortBy="#{patient.surname}" filterBy="#{patient.surname}" 
+                              headerText="#{msg.patientSurname}" filterMatchMode="contains">
+                        <h:outputText value="#{patient.surname}" />
+                    </p:column>
+
+                    <p:column sortBy="#{patient.pesel}" filterBy="#{patient.pesel}" 
+                              headerText="#{msg.patientPesel}" filterMatchMode="contains">
+                        <h:outputText value="#{patient.pesel}" />
+                    </p:column> 
+
+                </p:dataTable>
+            </h:form>
+	</ui:define>
+</ui:composition>

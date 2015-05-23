@@ -9,8 +9,9 @@
         <p:growl id="messages"/>
 
         <p:menubar>
-            <p:menuitem value="#{msg.patientSearch}" url="/listPatient.jsf" icon="ui-icon-search" />
+            <p:menuitem value="#{msg.patientSearch}" url="/searchPatient.jsf" icon="ui-icon-search" />
             <p:menuitem value="#{msg.patientAdd}" url="/addPatient.jsf" icon="ui-icon-plus" />
+            <p:menuitem value="#{msg.patientRegistered}" url="/registeredPatient.jsf" icon="ui-icon-person" />
 
             <f:facet name="options">
                 <p:commandButton type="button" value="#{msg.tools}" icon="ui-icon-wrench" disabled="true" />
