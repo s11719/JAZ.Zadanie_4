@@ -7,7 +7,8 @@
 	template="/templates/default.xhtml">
 	<ui:define name="content">
             <h:form id="patientForm">                
-        
+                <f:event type="postValidate" listener="#{patientBean.compareBirthdatePesel}" />
+                
                 <h:panelGrid columns="3" cellpadding="10">
                     <p:outputLabel value="#{msg.patientName}" />
                     <p:inputText id="name" value="#{patientBean.patient.name}" 
@@ -34,10 +35,10 @@
                     <p:message for="pesel" /> 
                     
                     <p:outputLabel value="#{msg.patientBirthdate}" />
-                    <p:calendar id="popup" value="#{patientBean.patient.birthDate}"
+                    <p:calendar id="birthdate" value="#{patientBean.patient.birthDate}"
                                     validator="#{patientBean.dateValidator}" required="true" 
                                         requiredMessage="#{err.fieldRequired}" />                                   
-                    <p:message for="popup" /> 
+                    <p:message for="birthdate" /> 
                     
                     <p:outputLabel value="#{msg.patientAddress}" />
                     <p:inputTextarea rows="2" cols="25" id="address" value="#{patientBean.patient.address}" 

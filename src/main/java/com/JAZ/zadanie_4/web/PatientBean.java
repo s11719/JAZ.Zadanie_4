@@ -9,7 +9,10 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIForm;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.ListDataModel;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Named;
@@ -78,6 +81,22 @@ public class PatientBean implements Serializable {
             throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, 
                 "Podaj właściwą datę urodzenia.", null));
         }        
+    }
+    
+    public void compareBirthdatePesel(ComponentSystemEvent event) {
+        UIForm form = (UIForm) event.getComponent();
+	UIInput UIbirthDate = (UIInput) form.findComponent("birthdate");
+	UIInput UIpesel = (UIInput) form.findComponent("pesel");
+        
+        String birthdate = UIbirthDate.getValue().toString().substring(27, 29);
+        String pesel = UIpesel.getValue().toString().substring(0, 2);
+        
+        if (!birthdate.equals(pesel)) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(form.getClientId(), new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                "Data urodzenia jest niezgodna z numerem PESEL.", null));
+            context.renderResponse();         
+        }
     }
     
 }
