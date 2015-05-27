@@ -84,22 +84,28 @@ public class PatientBean implements Serializable {
     }
     
     public void compareBirthdatePesel(ComponentSystemEvent event) {
-        UIForm form = (UIForm) event.getComponent();
-	UIInput UIbirthDate = (UIInput) form.findComponent("birthdate");
-	UIInput UIpesel = (UIInput) form.findComponent("pesel");
-        
-        String birthdate = UIbirthDate.getValue().toString().substring(27, 29);
-        String pesel = UIpesel.getValue().toString().substring(0, 2);
-        
-        if (!birthdate.equals(pesel)) {
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(form.getClientId(), new FacesMessage(FacesMessage.SEVERITY_ERROR, 
-                "Data urodzenia jest niezgodna z numerem PESEL.", null));
-            context.renderResponse();         
+        try {        
+            UIForm form = (UIForm) event.getComponent();
+            UIInput UIbirthDate = (UIInput) form.findComponent("birthdate");
+            UIInput UIpesel = (UIInput) form.findComponent("pesel");
+
+            String birthdate = UIbirthDate.getValue().toString().substring(27, 29);
+            String pesel = UIpesel.getValue().toString().substring(0, 2);
+
+            if (!birthdate.equals(pesel)) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(form.getClientId(), new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+                    "Data urodzenia jest niezgodna z numerem PESEL.", null));
+                context.renderResponse();         
+            }
+        }
+        catch (NullPointerException exception) {
         }
     }
     
 }
+
+
         
     
 

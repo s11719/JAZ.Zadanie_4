@@ -6,7 +6,8 @@
         xmlns:p="http://primefaces.org/ui" 
 	template="/templates/default.xhtml">
 	<ui:define name="content">
-            <h:form id="patientForm">                
+            <h:form id="patientForm">
+                
                 <f:event type="postValidate" listener="#{patientBean.compareBirthdatePesel}" />
                 
                 <h:panelGrid columns="3" cellpadding="10">
@@ -15,35 +16,42 @@
                                     required="true" requiredMessage="#{err.fieldRequired}" 
                                         validatorMessage="#{err.rangeRequired}">
                         <f:validateLength minimum="2" maximum="50" />
+                        <p:ajax update="msgName" event="keyup" />
                     </p:inputText>
-                    <p:message for="name" />            
+                    <p:message for="name" id="msgName" />            
                     
                     <p:outputLabel value="#{msg.patientSurname}" />
                     <p:inputText id="surname" value="#{patientBean.patient.surname}" 
                                     required="true" requiredMessage="#{err.fieldRequired}" 
                                         validatorMessage="#{err.rangeRequired}">
                         <f:validateLength minimum="2" maximum="50" />
+                        <p:ajax update="msgSurname" event="keyup" />
                     </p:inputText>                    
-                    <p:message for="surname" /> 
+                    <p:message for="surname" id="msgSurname" /> 
                     
                     <p:outputLabel value="#{msg.patientPesel}" />                    
                     <p:inputMask mask="99999999999" id="pesel" value="#{patientBean.patient.pesel}" 
                                     validator="#{patientBean.uniquePesel}" required="true" 
                                         requiredMessage="#{err.fieldRequired}">
+                        <p:ajax update="msgPesel" event="keyup" />
                         <f:validator validatorId="peselValidator" />
                     </p:inputMask>    
-                    <p:message for="pesel" /> 
+                    <p:message for="pesel" id="msgPesel" /> 
                     
                     <p:outputLabel value="#{msg.patientBirthdate}" />
                     <p:calendar id="birthdate" value="#{patientBean.patient.birthDate}"
                                     validator="#{patientBean.dateValidator}" required="true" 
-                                        requiredMessage="#{err.fieldRequired}" />                                   
-                    <p:message for="birthdate" /> 
+                                        requiredMessage="#{err.fieldRequired}">                                   
+                        <p:ajax update="msgBirthdate" event="dateSelect" />
+                    </p:calendar>                    
+                    <p:message for="birthdate" id="msgBirthdate" /> 
                     
                     <p:outputLabel value="#{msg.patientAddress}" />
                     <p:inputTextarea rows="2" cols="25" id="address" value="#{patientBean.patient.address}" 
-                                        required="true" requiredMessage="#{err.fieldRequired}" />
-                    <p:message for="address" /> 
+                                        required="true" requiredMessage="#{err.fieldRequired}">
+                        <p:ajax update="msgAddress" event="keyup" />
+                    </p:inputTextarea>
+                    <p:message for="address" id="msgAddress" /> 
                     
                     <p:outputLabel value="#{msg.patientPhoneNumber}" />
                     <p:inputMask mask="999-999-999" id="phoneNumber" value="#{patientBean.patient.phoneNumber}" />
