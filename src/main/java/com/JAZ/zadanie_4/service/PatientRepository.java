@@ -27,7 +27,7 @@ public class PatientRepository {
         newPatient.setAddress(patient.getAddress());
         newPatient.setPhoneNumber(patient.getPhoneNumber());
         newPatient.setWeight(patient.getWeight());
-        newPatient.setHeight(patient.getWeight());
+        newPatient.setHeight(patient.getHeight());
                 
         patientRepository.add(newPatient);
     }

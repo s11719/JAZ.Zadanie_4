@@ -8,8 +8,8 @@
 	<ui:define name="content">
             <h:form id="patientFilter">
                 <p:dataTable var="patient" value="#{patientBean.patientData}" widgetVar="patientFilter"
-                             emptyMessage="#{msg.patientNotFound}" filteredValue="#{patientBean.filteredData}">
-
+                                emptyMessage="#{msg.patientNotFound}" filteredValue="#{patientBean.filteredData}">
+                    
                     <p:column sortBy="#{patient.name}" filterBy="#{patient.name}" 
                               headerText="#{msg.patientName}" filterMatchMode="contains">
                         <h:outputText value="#{patient.name}" />
@@ -24,8 +24,8 @@
                               headerText="#{msg.patientPesel}" filterMatchMode="contains">
                         <h:outputText value="#{patient.pesel}" />
                     </p:column> 
-
+                
                 </p:dataTable>
-            </h:form>
+            </h:form>           
 	</ui:define>
 </ui:composition>

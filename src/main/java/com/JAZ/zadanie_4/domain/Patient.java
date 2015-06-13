@@ -11,8 +11,8 @@ public class Patient {
     Date birthDate;
     String address;
     String phoneNumber;
-    float weight;
-    float height; 
+    String weight;
+    String height; 
     
     public String getDateAdded() {
         return dateAdded;
@@ -70,19 +70,19 @@ public class Patient {
         this.phoneNumber = phoneNumber;
     }
 
-    public float getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public float getHeight() {
+    public String getHeight() {
         return height;
     }
 
-    public void setHeight(float height) {
+    public void setHeight(String height) {
         this.height = height;
     }  
     

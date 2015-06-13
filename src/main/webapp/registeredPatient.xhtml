@@ -6,7 +6,7 @@
         xmlns:p="http://primefaces.org/ui" 
 	template="/templates/default.xhtml">
 	<ui:define name="content">
-            <p:dataTable var="patient" value="#{patientBean.patientData}">
+            <p:dataTable var="patient" value="#{patientBean.patientData}" emptyMessage="#{msg.patientListEmpty}">
                  <p:column headerText="#{msg.patientDateAdded}">
                     <h:outputText value="#{patient.dateAdded}" />
                 </p:column>

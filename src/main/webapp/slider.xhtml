@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui" 
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+            <h:form id="patientFilter">
+                <p:dataTable var="patient" value="#{patientBean.patientData}" widgetVar="patientFilter"
+                                emptyMessage="#{msg.patientNotFound}" filteredValue="#{patientBean.filteredData}">
+                                                        
+                    <p:column sortBy="#{patient.weight}" filterBy="#{patient.weight}"
+                                headerText="#{msg.patientWeight}">                         
+                        <f:facet name="filter" >                            
+                            <h:outputText id="sliderValue" />
+                            <p:slider for="weightFrom, weightTo" range="true" maxValue="200" 
+                                        display="sliderValue" displayTemplate="#{msg.from} {min} #{msg.to} {max}">
+                                <p:ajax event="slideEnd" process="weightFrom, weightTo" />
+                            </p:slider>            
+                            <h:inputHidden id="weightFrom" valueChangeListener="#{patientBean.setWeightFrom}" />
+                            <h:inputHidden id="weightTo" valueChangeListener="#{patientBean.setWeightFrom}" />
+                        </f:facet>                        
+                        <h:outputText value="#{patient.weight}" />
+                    </p:column>
+                
+                </p:dataTable>
+            </h:form>           
+	</ui:define>
+</ui:composition>
